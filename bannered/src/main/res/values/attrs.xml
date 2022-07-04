@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Bannered">
+        <!--banner view-->
+        <attr name="strokeWidth" format="dimension"/>
+        <attr name="strokeColor" format="color"/>
+        <attr name="cardBackgroundColor" format="color"/>
+        <attr name="key" format="string" required="true"/>
+
+        <!--description-->
+        <attr name="description" format="string"/>
+        <attr name="descriptionTextColor" format="color"/>
+        <attr name="descriptionTextSize" format="dimension"/>
+
+        <!--dismiss button-->
+        <attr name="dismissButtonEnabled" format="boolean"/>
+        <attr name="dismissButtonText" format="string"/>
+        <attr name="dismissButtonTextColor" format="color"/>
+
+    </declare-styleable>
+</resources>

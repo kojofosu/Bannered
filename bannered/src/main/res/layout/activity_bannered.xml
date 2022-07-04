@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/def_banner_corner_radius"
+    app:cardBackgroundColor="@color/def_banner_bg_color"
+    app:contentPaddingTop="20dp"
+    app:contentPaddingLeft="20dp"
+    app:contentPaddingRight="20dp"
+    android:id="@+id/banner_view">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/banner_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lorem_ipsum" />
+
+        <Button
+            android:id="@+id/banner_dismiss_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/banner_description"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:text="@string/def_dismiss_test"
+            android:textAllCaps="false"
+            android:textColor="?android:colorPrimary"/>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
