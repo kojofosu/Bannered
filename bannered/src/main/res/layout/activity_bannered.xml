@@ -36,6 +36,7 @@
             android:background="@android:color/transparent"
             android:text="@string/def_dismiss_test"
             android:textAllCaps="false"
+            android:layout_margin="10dp"
             android:textColor="?android:colorPrimary"/>
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
