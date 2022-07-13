@@ -6,9 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/def_banner_corner_radius"
     app:cardBackgroundColor="@color/def_banner_bg_color"
-    app:contentPaddingTop="20dp"
-    app:contentPaddingLeft="20dp"
-    app:contentPaddingRight="20dp"
+    app:contentPadding="20dp"
     android:id="@+id/banner_view">
 
     <RelativeLayout
@@ -16,12 +14,20 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/banner_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textAppearance="?attr/textAppearanceHeadline6"/>
+
+        <TextView
             android:id="@+id/banner_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum" />
+            android:text="@string/lorem_ipsum"
+            android:layout_below="@id/banner_title"/>
 
-        <Button
+        <TextView
             android:id="@+id/banner_dismiss_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

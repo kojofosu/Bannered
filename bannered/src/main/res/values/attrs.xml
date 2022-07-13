@@ -7,6 +7,12 @@
         <attr name="cardBackgroundColor" format="color"/>
         <attr name="key" format="string" required="true"/>
 
+        <!--title-->
+        <attr name="title" format="string"/>
+        <attr name="titleTextColor" format="color"/>
+        <attr name="titleTextSize" format="dimension"/>
+        <attr name="titleEnabled" format="boolean" />
+
         <!--description-->
         <attr name="description" format="string"/>
         <attr name="descriptionTextColor" format="color"/>
