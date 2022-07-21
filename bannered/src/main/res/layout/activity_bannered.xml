@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/def_banner_corner_radius"
     app:cardBackgroundColor="@color/def_banner_bg_color"
-    app:contentPadding="20dp"
+    app:contentPadding="10dp"
     android:id="@+id/banner_view">
 
     <RelativeLayout
@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
+            android:layout_marginBottom="10dp"
             android:textAppearance="?attr/textAppearanceHeadline6"/>
 
         <TextView
@@ -36,7 +37,8 @@
             android:background="@android:color/transparent"
             android:text="@string/def_dismiss_test"
             android:textAllCaps="false"
-            android:layout_margin="10dp"
-            android:textColor="?android:colorPrimary"/>
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="?attr/colorPrimary"/>
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
