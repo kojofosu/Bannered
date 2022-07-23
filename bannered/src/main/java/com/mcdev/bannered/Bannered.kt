@@ -18,7 +18,7 @@ class Bannered @JvmOverloads constructor(context: Context,
                                          defStyle: Int = 0):
     MaterialCardView(context, attributeSet, defStyle){
 
-    private var sharedPreferences: SharedPreferences? = null;
+    private var sharedPreferences: SharedPreferences? = null
 
     private var binding = ActivityBanneredBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -47,7 +47,7 @@ class Bannered @JvmOverloads constructor(context: Context,
 
 
     init {
-        sharedPreferences = context.getSharedPreferences("com.mcdev.bannered",Context.MODE_PRIVATE)
+        sharedPreferences = context.getSharedPreferences(context.packageName.toString(),Context.MODE_PRIVATE)
         val attributes = context.obtainStyledAttributes(
             attributeSet, R.styleable.Bannered, defStyle, 0
         )
