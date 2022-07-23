@@ -2,6 +2,8 @@
 
 ![Jit](https://img.shields.io/jitpack/v/github/kojofosu/Bannered?style=for-the-badge&color=2F9319) 
 
+![Thumbnail](https://user-images.githubusercontent.com/20203694/180595325-1533e6b6-d8de-420d-adbf-9667206534f1.jpg)
+
 ## Setup
 
 Add it in your root `build.gradle` at the end of repositories:
