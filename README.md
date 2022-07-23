@@ -77,3 +77,6 @@ dependencies {
 | `app:strokeWidth`            | The banner's border stroke size                              |
 | `app:strokeColor`            | The border stroke's color                                    |
 | `app:cardBackgroundColor`    | The banner's background color                                |
+
+
+### Licensed under the [Apache-2.0 License](LICENSE)
