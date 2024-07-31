@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:layout_marginBottom="10dp"
+            android:textSize="20sp"
             android:textAppearance="?attr/textAppearanceHeadline6"/>
 
         <TextView
@@ -29,16 +30,30 @@
             android:layout_below="@id/banner_title"/>
 
         <TextView
-            android:id="@+id/banner_dismiss_button"
+            android:id="@+id/banner_positive_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/banner_description"
+            android:layout_toStartOf="@+id/banner_negative_button"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:text="@string/ok"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:textColor="?attr/colorPrimary" />
+
+        <TextView
+            android:id="@+id/banner_negative_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/banner_description"
             android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
             android:text="@string/def_dismiss_test"
             android:textAllCaps="false"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="10dp"
-            android:textColor="?attr/colorPrimary"/>
+            android:textColor="?attr/colorPrimary" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -2,6 +2,7 @@ package com.mcdev.bannered
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.os.Build
@@ -13,41 +14,75 @@ import androidx.core.content.res.getStringOrThrow
 import com.google.android.material.card.MaterialCardView
 import com.mcdev.bannered.databinding.ActivityBanneredBinding
 
-class Bannered @JvmOverloads constructor(context: Context,
-                                         attributeSet: AttributeSet? = null,
-                                         defStyle: Int = 0):
-    MaterialCardView(context, attributeSet, defStyle){
+class Bannered @JvmOverloads constructor(
+    context: Context,
+    attributeSet: AttributeSet? = null,
+    defStyle: Int = 0
+) :
+    MaterialCardView(context, attributeSet, defStyle) {
 
     private var sharedPreferences: SharedPreferences? = null
 
     private var binding = ActivityBanneredBinding.inflate(LayoutInflater.from(context), this, true)
 
-    private var bannerViewKey: String? = null
-    private var bannerViewStrokeWidth: Float = 0F
-    private var bannerViewStrokeColor: Int? = null
-    private var bannerViewBgColor: Int? = null
-    private var title: String? = resources.getString(R.string.app_name)
-    private var titleTextColor: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+    var bannerViewKey: String? = null
+    var bannerViewStrokeWidth: Float = 0F
+    var bannerViewStrokeColor: Int? = null
+    var bannerViewBgColor: Int? = null
+    var title: String? = null
+        get() = field
+        set(value) {
+            binding.bannerTitle.text = value
+            field = value ?: resources.getString(R.string.app_name)
+        }
+    var titleTextColor: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         resources.getColor(R.color.black, context.theme)
     } else {
         Color.parseColor("#2a2a2a")
     }
-    private var titleTextSize: Float = resources.getDimension(R.dimen.def_text_size)
-    private var titleEnabled : Boolean = true
-    private var description: String? = resources.getString(R.string.lorem_ipsum)
-    private var descriptionTextColor: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+    var titleTextSize: Float = resources.getDimension(R.dimen.def_text_size)
+    var titleEnabled: Boolean = true
+    var description: String? = null
+        set(value) {
+            binding.bannerDescription.text = value
+            field = value ?: resources.getString(R.string.lorem_ipsum)
+        }
+    var descriptionTextColor: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         resources.getColor(R.color.black, context.theme)
     } else {
         Color.parseColor("#2a2a2a")
     }
-    private var descriptionTextSize: Float = resources.getDimension(R.dimen.def_text_size)
-    private var dismissButtonText: String? = null
-    private var dismissButtonEnabled: Boolean = true
-    private var dismissTextColor: Int? = null
+    var descriptionTextSize: Float = resources.getDimension(R.dimen.def_text_size)
+    var negativeButtonText: String? = context.getString(R.string.def_dismiss_test)
+        set(value) {
+            binding.bannerNegativeButton.text = value
+            field = value
+        }
+    var negativeButtonEnabled: Boolean = true
+        set(value) {
+            binding.bannerNegativeButton.visibility = if (value) View.VISIBLE else View.GONE
+            field = value
+        }
+    var negativeTextColor: Int = android.R.color.black
+        set(value) {
+//            val c = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                context.getColor(value ?: android.R.color.black)
+//            } else {
+//                value ?: android.R.color.black
+//            }
+//            binding.bannerNegativeButton.setTextColor(resources.getColor(value, context.theme))
+            field = value
+        }
+    var negativeButtonOnClickListener: OnClickListener? = null
+        set(value) {
+            binding.bannerNegativeButton.setOnClickListener(value)
+            field = value
+        }
 
 
     init {
-        sharedPreferences = context.getSharedPreferences(context.packageName.toString(),Context.MODE_PRIVATE)
+        sharedPreferences =
+            context.getSharedPreferences(context.packageName.toString(), Context.MODE_PRIVATE)
         val attributes = context.obtainStyledAttributes(
             attributeSet, R.styleable.Bannered, defStyle, 0
         )
@@ -62,11 +97,11 @@ class Bannered @JvmOverloads constructor(context: Context,
             binding.bannerView.visibility = View.GONE
         }
 
-        binding.bannerDismissButton.setOnClickListener {
-//            val id: String = binding.bannerView.id.toString()
-            sharedPreferences!!.edit().putBoolean(bannerViewKey, false).apply()
-            binding.bannerView.visibility = View.GONE
-        }
+//        binding.bannernegativeButton.setOnClickListener {
+////            val id: String = binding.bannerView.id.toString()
+//            sharedPreferences!!.edit().putBoolean(bannerViewKey, false).apply()
+//            binding.bannerView.visibility = View.GONE
+//        }
 
         /*TypedArrays are heavyweight objects that should be recycled immediately
         after all the attributes you need have been extracted.*/
@@ -126,18 +161,28 @@ class Bannered @JvmOverloads constructor(context: Context,
         bannerViewKey = attributes.getStringOrThrow(R.styleable.Bannered_key)
 
         /*Get title text*/
-        title = attributes.getString(R.styleable.Bannered_title)
-        titleTextSize = attributes.getDimension(R.styleable.Bannered_titleTextSize, resources.getDimension(R.dimen.def_text_size))
+        title = title ?: attributes.getString(R.styleable.Bannered_title)
+        titleTextSize = attributes.getDimension(
+            R.styleable.Bannered_titleTextSize,
+            resources.getDimension(R.dimen.def_text_size)
+        )
         titleEnabled = attributes.getBoolean(R.styleable.Bannered_titleEnabled, true)
 
         /*Get description text*/
         description = attributes.getString(R.styleable.Bannered_description)
-        descriptionTextSize = attributes.getDimension(R.styleable.Bannered_descriptionTextSize, resources.getDimension(R.dimen.def_text_size))
+        descriptionTextSize = attributes.getDimension(
+            R.styleable.Bannered_descriptionTextSize,
+            resources.getDimension(R.dimen.def_text_size)
+        )
 
-        /*Get dismiss Button text*/
-        dismissButtonText = attributes.getString(R.styleable.Bannered_dismissButtonText)
-        dismissButtonEnabled = attributes.getBoolean(R.styleable.Bannered_dismissButtonEnabled, true)
-        dismissTextColor = attributes.getColor(R.styleable.Bannered_dismissButtonTextColor, com.google.android.material.R.attr.colorPrimary)
+        /*Get negative Button text*/
+        negativeButtonText = attributes.getString(R.styleable.Bannered_negativeButtonText)
+        negativeButtonEnabled =
+            attributes.getBoolean(R.styleable.Bannered_negativeButtonEnabled, true)
+        negativeTextColor = attributes.getColor(
+            R.styleable.Bannered_negativeButtonTextColor,
+            com.google.android.material.R.attr.colorPrimary
+        )
 
     }
 
@@ -169,15 +214,15 @@ class Bannered @JvmOverloads constructor(context: Context,
             this.setTextSize(TypedValue.COMPLEX_UNIT_PX, descriptionTextSize)
         }
 
-        /*dismiss button*/
-        binding.bannerDismissButton.apply {
-            if (dismissButtonEnabled)
-                this.visibility = View.VISIBLE
-            else
-                this.visibility = View.GONE
+        /*negative button*/
+        binding.bannerNegativeButton.apply {
+//            if (negativeButtonEnabled)
+//                this.visibility = View.VISIBLE
+//            else
+//                this.visibility = View.GONE
 
-            this.text = dismissButtonText
-            this.setTextColor(dismissTextColor!!)
+//            this.text = negativeButtonText
+            this.setTextColor(negativeTextColor)
         }
     }
 }

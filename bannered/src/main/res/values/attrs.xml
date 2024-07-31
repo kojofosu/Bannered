@@ -18,10 +18,10 @@
         <attr name="descriptionTextColor" format="color"/>
         <attr name="descriptionTextSize" format="dimension"/>
 
-        <!--dismiss button-->
-        <attr name="dismissButtonEnabled" format="boolean"/>
-        <attr name="dismissButtonText" format="string"/>
-        <attr name="dismissButtonTextColor" format="color"/>
+        <!--negative button-->
+        <attr name="negativeButtonEnabled" format="boolean"/>
+        <attr name="negativeButtonText" format="string"/>
+        <attr name="negativeButtonTextColor" format="color"/>
 
     </declare-styleable>
 </resources>
