@@ -46,9 +46,9 @@ dependencies {
         app:description="Fill in your profile for a smoother experience. Get 3 reward keys after completing profile"
         app:descriptionTextColor="#2a2a2a"
         app:descriptionTextSize="15sp"
-        app:dismissButtonEnabled="true"
-        app:dismissButtonText="DISMISS"
-        app:dismissButtonTextColor="#21ce99"
+        app:negativeButtonEnabled="true"
+        app:negativeButtonText="DISMISS"
+        app:negativeButtonTextColor="#21ce99"
         android:layout_marginHorizontal="10dp"
         app:cardElevation="0dp"
         app:cardCornerRadius="15dp"
@@ -71,9 +71,9 @@ dependencies {
 | `app:description`            | The description text                                         |
 | `app:descriptionTextColor`   | The description text's color                                 |
 | `app:descriptionTextSize`    | The size of the description text                             |
-| `app:dismissButtonEnabled`   | `true` or `false`: Display the dismiss button                |
-| `app:dismissButtonText`      | Change the text displayed as the dismiss button. Default is `"DISMISS"` |
-| `app:dismissButtonTextColor` | Dismiss button's text color                                  |
+| `app:negativeButtonEnabled`   | `true` or `false`: Display the negative button                |
+| `app:negativeButtonText`      | Change the text displayed as the negative button. Default is `"negative"` |
+| `app:negativeButtonTextColor` | negative button's text color                                  |
 | `app:cardElavation`          | Add elevation to the banner                                  |
 | `app:cardCornerRadius`       | The banner's corner radius                                   |
 | `app:strokeWidth`            | The banner's border stroke size                              |

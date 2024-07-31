@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         app:key="banner demo"
         app:description="Today is sunday"
-        app:dismissButtonEnabled="true"
-        app:dismissButtonText="ODO YEWU"
+        app:negativeButtonEnabled="true"
+        app:negativeButtonText="ODO YEWU"
         app:layout_constraintTop_toTopOf="parent"/>
 
 
@@ -30,9 +30,9 @@
         app:description="Display your profile by filling all the forms. So dear John doe do not forget to fil your information for us"
         app:descriptionTextColor="#2a2a2a"
         app:descriptionTextSize="15sp"
-        app:dismissButtonEnabled="true"
-        app:dismissButtonText="DISMISS"
-        app:dismissButtonTextColor="#21ce99"
+        app:negativeButtonEnabled="true"
+        app:negativeButtonText="negative"
+        app:negativeButtonTextColor="#21ce99"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
